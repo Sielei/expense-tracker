@@ -18,7 +18,8 @@ public class Expense extends AggregateRoot<ExpenseId> {
     private final Money expenseCost;
 
     void createExpense(){}
-    boolean isCostValid(){return true;}
+    void cancelExpense(){}
+    boolean isCostValid(){return expenseCost != null && expenseCost.isGreaterThanZero();}
 
     private Expense(Builder builder) {
         super.setId(builder.expenseId);

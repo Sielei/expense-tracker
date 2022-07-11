@@ -36,7 +36,27 @@
             </dependency>
             <dependency>
                 <groupId>com.et</groupId>
+                <artifactId>common-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
                 <artifactId>expense-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
+                <artifactId>expense-application-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
+                <artifactId>backend-application</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
+                <artifactId>backend-data-access</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
@@ -46,6 +66,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.1.0</version>
         </dependency>
     </dependencies>
 

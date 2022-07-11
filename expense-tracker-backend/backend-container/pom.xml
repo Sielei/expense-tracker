@@ -11,9 +11,53 @@
 
     <artifactId>backend-container</artifactId>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.et</groupId>
+            <artifactId>expense-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
+            <artifactId>expense-application-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
+            <artifactId>backend-data-access</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
+            <artifactId>backend-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <name>${project.groupId}/expense-tacker-backend:${project.version}</name>
+                    </image>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build-image</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
