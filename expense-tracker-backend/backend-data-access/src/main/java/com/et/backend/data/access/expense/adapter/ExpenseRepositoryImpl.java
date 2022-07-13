@@ -1,5 +1,6 @@
 package com.et.backend.data.access.expense.adapter;
 
+import com.et.backend.data.access.expense.mapper.ExpenseEntityDataMapper;
 import com.et.backend.data.access.expense.entity.ExpenseEntity;
 import com.et.backend.data.access.expense.repository.ExpenseJpaRepository;
 import com.et.common.domain.valueobject.UserId;
@@ -7,7 +8,6 @@ import com.et.expense.application.service.ports.output.repository.ExpenseReposit
 import com.et.expense.domain.entity.Expense;
 import com.et.expense.domain.valueobject.ExpenseId;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,11 +18,12 @@ import java.util.Optional;
 public class ExpenseRepositoryImpl implements ExpenseRepository {
 
     private final ExpenseJpaRepository expenseJpaRepository;
-    private final ModelMapper modelMapper;
+    private final ExpenseEntityDataMapper expenseDataMapper;
     @Override
     public Expense save(Expense expense) {
-        ExpenseEntity newExpenseEntity = expenseJpaRepository.save(modelMapper.map(expense, ExpenseEntity.class));
-        return modelMapper.map(newExpenseEntity, Expense.class);
+        ExpenseEntity expenseEntity = expenseDataMapper.expenseToExpenseEntity(expense);
+        ExpenseEntity newExpenseEntity = expenseJpaRepository.save(expenseEntity);
+        return expenseDataMapper.expenseEntityToExpense(newExpenseEntity);
     }
 
     @Override

@@ -1,11 +1,11 @@
 package com.et.expense.domain.entity;
 
 import com.et.common.domain.entity.AggregateRoot;
-import com.et.common.domain.valueobject.AccountId;
-import com.et.common.domain.valueobject.Currency;
-import com.et.common.domain.valueobject.Money;
-import com.et.common.domain.valueobject.UserId;
+import com.et.common.domain.valueobject.*;
+import com.et.expense.domain.exception.ExpenseDomainException;
 import com.et.expense.domain.valueobject.ExpenseId;
+
+import java.util.UUID;
 
 public class Expense extends AggregateRoot<ExpenseId> {
 
@@ -16,9 +16,31 @@ public class Expense extends AggregateRoot<ExpenseId> {
     private final AccountId accountId;
     private Currency currency;
     private final Money expenseCost;
+    private ExpenseStatus expenseStatus;
 
-    void createExpense(){}
-    void cancelExpense(){}
+    public void createExpense(){
+        setId(new ExpenseId(UUID.randomUUID()));
+        validateExpense();
+        validateExpenseCost();
+        expenseStatus = ExpenseStatus.CREATED;
+
+    }
+
+    private void validateExpenseCost() {
+        if (!isCostValid()){
+            throw new ExpenseDomainException("Expense cost should be greater than zero!");
+        }
+    }
+
+    private void validateExpense() {
+        if (expenseStatus != null && getId() != null){
+            throw new ExpenseDomainException("Expense is not in valid initial state!");
+        }
+    }
+
+    void deleteExpense(){
+        expenseStatus = ExpenseStatus.DELETED;
+    }
     boolean isCostValid(){return expenseCost != null && expenseCost.isGreaterThanZero();}
 
     private Expense(Builder builder) {
@@ -30,6 +52,7 @@ public class Expense extends AggregateRoot<ExpenseId> {
         accountId = builder.accountId;
         currency = builder.currency;
         expenseCost = builder.expenseCost;
+        expenseStatus = builder.expenseStatus;
     }
 
     public UserId getUserId() {
@@ -60,12 +83,17 @@ public class Expense extends AggregateRoot<ExpenseId> {
         return expenseCost;
     }
 
+    public ExpenseStatus getExpenseStatus() {
+        return expenseStatus;
+    }
+
     public static Builder builder() {
         return new Builder();
     }
 
 
     public static final class Builder {
+        public ExpenseStatus expenseStatus;
         private ExpenseId expenseId;
         private UserId userId;
         private String expenseName;
@@ -80,6 +108,11 @@ public class Expense extends AggregateRoot<ExpenseId> {
 
         public Builder expenseId(ExpenseId val) {
             expenseId = val;
+            return this;
+        }
+
+        public Builder expenseStatus(ExpenseStatus val){
+            expenseStatus = val;
             return this;
         }
 

@@ -1,9 +1,6 @@
 package com.et.expense.application.service.mapper;
 
-import com.et.common.domain.valueobject.AccountId;
-import com.et.common.domain.valueobject.Currency;
-import com.et.common.domain.valueobject.Money;
-import com.et.common.domain.valueobject.UserId;
+import com.et.common.domain.valueobject.*;
 import com.et.expense.application.service.dto.ExpenseDto;
 import com.et.expense.domain.entity.Category;
 import com.et.expense.domain.entity.Expense;
@@ -24,6 +21,7 @@ public class ExpenseDataMapper {
                 .expenseName(expenseDto.getExpenseName())
                 .expenseDescription(expenseDto.getExpenseDescription())
                 .currency(Currency.valueOf(expenseDto.getCurrency()))
+                .expenseStatus(null)
                 .expenseCost(new Money(expenseDto.getExpenseCost()))
                 .build();
     }

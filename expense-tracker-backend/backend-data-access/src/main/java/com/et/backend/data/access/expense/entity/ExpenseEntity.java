@@ -1,10 +1,8 @@
 package com.et.backend.data.access.expense.entity;
 
-import com.et.common.domain.valueobject.AccountId;
-import com.et.common.domain.valueobject.Currency;
-import com.et.common.domain.valueobject.Money;
-import com.et.common.domain.valueobject.UserId;
+import com.et.common.domain.valueobject.*;
 import com.et.expense.domain.entity.Category;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,6 +10,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "expenses")
+@Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder
 public class ExpenseEntity {
     @Id
     @Column(name = "id", nullable = false)
@@ -26,5 +25,6 @@ public class ExpenseEntity {
     @Enumerated(EnumType.STRING)
     private Currency currency;
     private BigDecimal expenseCost;
-
+    @Enumerated(EnumType.STRING)
+    private ExpenseStatus expenseStatus;
 }

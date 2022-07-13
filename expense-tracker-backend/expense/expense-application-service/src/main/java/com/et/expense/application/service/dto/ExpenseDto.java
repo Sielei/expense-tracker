@@ -3,12 +3,14 @@ package com.et.expense.application.service.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @Getter
 @Builder
 @AllArgsConstructor
+@ToString
 public class ExpenseDto {
 
     private final String  userId;

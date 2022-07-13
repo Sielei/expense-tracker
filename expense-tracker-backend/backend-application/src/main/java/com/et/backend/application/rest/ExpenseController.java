@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ExpenseController {
 
-    private ExpenseApplicationService expenseApplicationService;
+    private final ExpenseApplicationService expenseApplicationService;
 
     @PostMapping
     public ResponseEntity<ExpenseDto> createExpense(@RequestBody ExpenseDto expenseDto){
