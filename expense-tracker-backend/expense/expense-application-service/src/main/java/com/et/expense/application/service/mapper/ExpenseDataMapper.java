@@ -29,6 +29,7 @@ public class ExpenseDataMapper {
     public ExpenseDto expenseToExpenseDto(Expense expense) {
         return ExpenseDto
                 .builder()
+                .id(expense.getId().getValue().toString())
                 .userId(expense.getUserId().getValue().toString())
                 .accountId(expense.getAccountId().getValue().toString())
                 .expenseName(expense.getExpenseName())
