@@ -4,6 +4,7 @@ import com.et.expense.application.service.dto.ExpenseDto;
 import com.et.expense.application.service.mapper.ExpenseDataMapper;
 import com.et.expense.application.service.ports.output.repository.ExpenseRepository;
 import com.et.expense.domain.entity.Expense;
+import com.et.expense.domain.valueobject.ExpenseId;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,6 +48,7 @@ class ExpenseApplicationServiceTest {
                 .build();
 
         Expense expense = expenseDataMapper.expenseDtoToExpense(expenseDto);
+        expense.setId(new ExpenseId(UUID.randomUUID()));
 
         when(expenseRepository.save(any(Expense.class))).thenReturn(expense);
     }
@@ -55,6 +58,7 @@ class ExpenseApplicationServiceTest {
         ExpenseDto newExpense = expenseApplicationService.createExpense(expenseDto);
         assertNotNull(newExpense);
         assertEquals(newExpense.getExpenseName(), "Grocery Shopping");
+
     }
 
 }

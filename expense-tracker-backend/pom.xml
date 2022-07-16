@@ -21,6 +21,9 @@
         <module>backend-application</module>
         <module>backend-data-access</module>
         <module>common</module>
+        <module>account</module>
+        <module>budget</module>
+        <module>user</module>
     </modules>
 
     <properties>
@@ -47,6 +50,16 @@
             <dependency>
                 <groupId>com.et</groupId>
                 <artifactId>expense-application-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
+                <artifactId>user-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
+                <artifactId>user-application-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

@@ -20,9 +20,9 @@ public class CreateExpenseHandler {
     private final ExpenseDomainService expenseDomainService;
     @Transactional
     public ExpenseDto createExpense(ExpenseDto expenseDto) {
-        Expense expense = expenseDataMapper.expenseDtoToExpense(expenseDto);
-        expenseDomainService.initializeAndInitializeExpense(expense);
-        Expense newExpense = expenseRepository.save(expense);
+        Expense expenseDtoToExpense = expenseDataMapper.expenseDtoToExpense(expenseDto);
+        expenseDomainService.initializeAndInitializeExpense(expenseDtoToExpense);
+        Expense newExpense = expenseRepository.save(expenseDtoToExpense);
         return expenseDataMapper.expenseToExpenseDto(newExpense);
     }
 }

@@ -18,7 +18,15 @@
         </dependency>
         <dependency>
             <groupId>com.et</groupId>
+            <artifactId>user-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
             <artifactId>expense-application-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
+            <artifactId>user-application-service</artifactId>
         </dependency>
         <dependency>
             <groupId>com.et</groupId>
