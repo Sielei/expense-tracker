@@ -6,6 +6,7 @@ import com.et.backend.data.access.user.repository.UserJpaRepository;
 import com.et.common.domain.valueobject.UserId;
 import com.et.user.application.service.ports.output.repository.UserRepository;
 import com.et.user.domain.entity.User;
+import com.et.user.domain.exception.UserDomainException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -31,7 +32,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> findUserByUsername(String username) {
-        return Optional.empty();
+        Optional<UserEntity> userEntityOptional = userJpaRepository.findByUsername(username);
+        if (userEntityOptional.isEmpty()){
+            throw new UserDomainException("No user exists with username: " + username);
+        }
+        return Optional.ofNullable(userEntityDataMapper.userEntityToUser(userEntityOptional.get()));
     }
 
     @Override
