@@ -21,6 +21,7 @@ public class UserDataMapper {
                 .userId(user.getId().getValue().toString())
                 .username(user.getUsername())
                 .email(user.getEmail())
+                .password(user.getPassword())
                 .build();
     }
 }

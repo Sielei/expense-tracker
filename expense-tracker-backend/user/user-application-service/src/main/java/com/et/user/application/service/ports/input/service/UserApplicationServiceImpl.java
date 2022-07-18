@@ -28,7 +28,7 @@ public class UserApplicationServiceImpl implements UserApplicationService{
 
     @Override
     public Optional<UserDto> findUserByUsername(String username) {
-        return Optional.empty();
+        return fetchUserHandler.findUserByUsername(username);
     }
 
     @Override
