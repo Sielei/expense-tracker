@@ -23,6 +23,7 @@ public class UserEntityDataMapper {
                 .userId(new UserId(userEntity.getId()))
                 .username(userEntity.getUsername())
                 .email(userEntity.getEmail())
+                .password(userEntity.getPassword())
                 .build();
     }
 }
