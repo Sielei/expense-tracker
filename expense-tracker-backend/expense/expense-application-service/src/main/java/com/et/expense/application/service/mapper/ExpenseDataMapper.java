@@ -1,6 +1,7 @@
 package com.et.expense.application.service.mapper;
 
 import com.et.common.domain.valueobject.*;
+import com.et.expense.application.service.dto.ExpenseCategoryDto;
 import com.et.expense.application.service.dto.ExpenseDto;
 import com.et.expense.domain.entity.Category;
 import com.et.expense.domain.entity.Expense;
@@ -17,7 +18,9 @@ public class ExpenseDataMapper {
                 .builder()
                 .userId(new UserId(UUID.fromString(expenseDto.getUserId())))
                 .accountId(new AccountId(UUID.fromString(expenseDto.getAccountId())))
-                .category(new Category(new CategoryId(UUID.fromString(expenseDto.getCategoryId()))))
+                .category(Category.builder()
+                        .categoryId(new CategoryId(UUID.fromString(expenseDto.getCategoryId())))
+                        .build())
                 .expenseName(expenseDto.getExpenseName())
                 .expenseDescription(expenseDto.getExpenseDescription())
                 .currency(Currency.valueOf(expenseDto.getCurrency()))
@@ -37,6 +40,24 @@ public class ExpenseDataMapper {
                 .categoryId(expense.getCategory().getId().getValue().toString())
                 .currency(expense.getCurrency().getValue())
                 .expenseCost(expense.getExpenseCost().getAmount())
+                .build();
+    }
+
+    public Category expenseCategoryDtoToCategory(ExpenseCategoryDto expenseCategoryDto) {
+        return Category
+                .builder()
+                .userId(new UserId(UUID.fromString(expenseCategoryDto.getUserId())))
+                .categoryName(expenseCategoryDto.getCategoryName())
+                .categoryDescription(expenseCategoryDto.getCategoryDescription())
+                .build();
+    }
+
+    public ExpenseCategoryDto categoryToCategoryExpenseDto(Category category) {
+        return ExpenseCategoryDto.builder()
+                .id(category.getId().getValue().toString())
+                .userId(category.getUserId().getValue().toString())
+                .categoryName(category.getCategoryName())
+                .categoryDescription(category.getCategoryDescription())
                 .build();
     }
 }

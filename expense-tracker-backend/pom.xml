@@ -65,6 +65,26 @@
             </dependency>
             <dependency>
                 <groupId>com.et</groupId>
+                <artifactId>account-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
+                <artifactId>account-application-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
+                <artifactId>budget-domain</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
+                <artifactId>budget-application-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.et</groupId>
                 <artifactId>backend-application</artifactId>
                 <version>${project.version}</version>
             </dependency>

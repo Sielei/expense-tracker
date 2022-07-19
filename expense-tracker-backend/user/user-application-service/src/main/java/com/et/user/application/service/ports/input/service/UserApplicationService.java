@@ -11,4 +11,7 @@ public interface UserApplicationService {
     Optional<UserDto> findUserById(UUID userId);
     Optional<UserDto> findUserByUsername(String username);
     Optional<UserDto> findUserByEmail(String email);
+    UserDto updateUserDetails(UUID userId, UserDto userDto);
+
+    UserDto updateUserPassword(UUID userId, String newPassword);
 }

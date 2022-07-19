@@ -10,12 +10,12 @@ import java.util.UUID;
 public class Expense extends AggregateRoot<ExpenseId> {
 
     private final UserId userId;
-    private final String expenseName;
-    private final String expenseDescription;
-    private final Category category;
-    private final AccountId accountId;
+    private String expenseName;
+    private String expenseDescription;
+    private Category category;
+    private AccountId accountId;
     private Currency currency;
-    private final Money expenseCost;
+    private Money expenseCost;
     private ExpenseStatus expenseStatus;
 
     public void createExpense(){
@@ -25,6 +25,17 @@ public class Expense extends AggregateRoot<ExpenseId> {
         expenseStatus = ExpenseStatus.CREATED;
 
     }
+
+    public void updateExpense(String expenseName, String expenseDescription,Category category,
+                              AccountId accountId, Currency currency, Money expenseCost){
+        this.expenseName = expenseName;
+        this.expenseDescription = expenseDescription;
+        this.category = category;
+        this.accountId = accountId;
+        this.currency = currency;
+        this.expenseCost = expenseCost;
+    }
+
 
     private void validateExpenseCost() {
         if (!isCostValid()){
@@ -38,7 +49,7 @@ public class Expense extends AggregateRoot<ExpenseId> {
         }
     }
 
-    void deleteExpense(){
+    public void deleteExpense(){
         expenseStatus = ExpenseStatus.DELETED;
     }
     boolean isCostValid(){return expenseCost != null && expenseCost.isGreaterThanZero();}

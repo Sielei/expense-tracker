@@ -51,8 +51,22 @@ public class ExpenseEntityDataMapper {
                 .build();
     }
 
-    private Category categoryEntityToCategory(CategoryEntity categoryEntity) {
-        return new Category(new UserId(categoryEntity.getUserId()), new CategoryId(categoryEntity.getId()),
-                categoryEntity.getCategoryName(), categoryEntity.getCategoryDescription());
+
+    public CategoryEntity categoryToCategoryEntity(Category category) {
+        return CategoryEntity.builder()
+                .id(category.getId().getValue())
+                .userId(category.getUserId().getValue())
+                .categoryName(category.getCategoryName())
+                .categoryDescription(category.getCategoryDescription())
+                .build();
+    }
+
+    public Category categoryEntityToCategory(CategoryEntity categoryEntity) {
+        return Category.builder()
+                .categoryId(new CategoryId(categoryEntity.getId()))
+                .userId(new UserId(categoryEntity.getUserId()))
+                .categoryName(categoryEntity.getCategoryName())
+                .categoryDescription(categoryEntity.getCategoryDescription())
+                .build();
     }
 }

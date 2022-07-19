@@ -1,5 +1,6 @@
 package com.et.expense.application.service.ports.input.service;
 
+import com.et.expense.application.service.dto.ExpenseCategoryDto;
 import com.et.expense.application.service.dto.ExpenseDto;
 
 import java.util.List;
@@ -12,4 +13,10 @@ public interface ExpenseApplicationService {
     ExpenseDto findExpenseById(UUID expenseId);
 
     List<ExpenseDto> findExpenseByUserId(UUID userId);
+
+    ExpenseCategoryDto createExpenseCategory(ExpenseCategoryDto expenseCategoryDto);
+
+    ExpenseCategoryDto findExpenseCategoryById(UUID categoryId);
+
+    List<ExpenseCategoryDto> findAllUserExpenseCategories(UUID userId);
 }

@@ -1,8 +1,10 @@
 package com.et.expense.application.service.ports.input.handler;
 
+import com.et.expense.application.service.dto.ExpenseCategoryDto;
 import com.et.expense.application.service.dto.ExpenseDto;
 import com.et.expense.application.service.mapper.ExpenseDataMapper;
 import com.et.expense.application.service.ports.output.repository.ExpenseRepository;
+import com.et.expense.domain.entity.Category;
 import com.et.expense.domain.entity.Expense;
 import com.et.expense.domain.service.ExpenseDomainService;
 import lombok.RequiredArgsConstructor;
@@ -24,5 +26,12 @@ public class CreateExpenseHandler {
         expenseDomainService.initializeAndInitializeExpense(expenseDtoToExpense);
         Expense newExpense = expenseRepository.save(expenseDtoToExpense);
         return expenseDataMapper.expenseToExpenseDto(newExpense);
+    }
+
+    public ExpenseCategoryDto createExpenseCategory(ExpenseCategoryDto expenseCategoryDto) {
+        Category expenseCategoryDtoToCategory = expenseDataMapper.expenseCategoryDtoToCategory(expenseCategoryDto);
+        expenseDomainService.initAndCreateCategory(expenseCategoryDtoToCategory);
+        Category newCategory = expenseRepository.saveCategory(expenseCategoryDtoToCategory);
+        return expenseDataMapper.categoryToCategoryExpenseDto(newCategory);
     }
 }

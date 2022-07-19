@@ -3,6 +3,7 @@ package com.et.user.application.service.ports.input.service;
 import com.et.user.application.service.dto.UserDto;
 import com.et.user.application.service.ports.input.helper.CreateUserHandler;
 import com.et.user.application.service.ports.input.helper.FetchUserHandler;
+import com.et.user.domain.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class UserApplicationServiceImpl implements UserApplicationService{
 
     @Override
     public Optional<UserDto> findUserById(UUID userId) {
-        return Optional.empty();
+        return fetchUserHandler.findUserById(userId);
     }
 
     @Override
@@ -34,5 +35,15 @@ public class UserApplicationServiceImpl implements UserApplicationService{
     @Override
     public Optional<UserDto> findUserByEmail(String email) {
         return Optional.empty();
+    }
+
+    @Override
+    public UserDto updateUserDetails(UUID userId, UserDto userDto) {
+        return createUserHandler.updateUserDetails(userId, userDto);
+    }
+
+    @Override
+    public UserDto updateUserPassword(UUID userId, String newPassword) {
+        return createUserHandler.updateUserPassword(userId, newPassword);
     }
 }

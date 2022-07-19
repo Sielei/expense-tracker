@@ -7,9 +7,9 @@ import java.util.UUID;
 
 public class User extends AggregateRoot<UserId> {
 
-    private final String username;
-    private final String email;
-    private final String password;
+    private String username;
+    private String email;
+    private String password;
 
     private User(Builder builder) {
         super.setId(builder.userId);
@@ -38,6 +38,14 @@ public class User extends AggregateRoot<UserId> {
         return password;
     }
 
+    public void updateUser(String username, String email){
+        this.username = username;
+        this.email = email;
+    }
+
+    public void updatePassword(String password){
+        this.password = password;
+    }
 
     public static final class Builder {
         private UserId userId;

@@ -9,12 +9,16 @@ public class UserDomainServiceImpl implements UserDomainService{
     }
 
     @Override
-    public void updateUser(User user) {
-
+    public void updateUser(User user, String email, String username) {
+        user.updateUser(username, email);
     }
 
     @Override
     public void deleteUser(User user) {
+    }
 
+    @Override
+    public void updateUserPassword(User user, String newPassword) {
+        user.updatePassword(newPassword);
     }
 }

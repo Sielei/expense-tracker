@@ -1,24 +1,19 @@
 package com.et.expense.application.service.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 
-@Getter
-@Builder
-@AllArgsConstructor
-@ToString
+
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class ExpenseDto {
 
-    private final String id;
-    private final String  userId;
-    private final String expenseName;
-    private final String expenseDescription;
-    private final String categoryId;
-    private final String  accountId;
-    private final String currency;
-    private final BigDecimal expenseCost;
+    private String id;
+    private String  userId;
+    private String expenseName;
+    private String expenseDescription;
+    private String categoryId;
+    private String  accountId;
+    private String currency;
+    private BigDecimal expenseCost;
 }

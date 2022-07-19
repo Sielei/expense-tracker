@@ -27,7 +27,11 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public Optional<User> findUserById(UserId userId) {
-        return Optional.empty();
+        Optional<UserEntity> userEntityOptional = userJpaRepository.findById(userId.getValue());
+        if (userEntityOptional.isEmpty()){
+            throw new UserDomainException("No user exists with id: " + userId.getValue());
+        }
+        return Optional.ofNullable(userEntityDataMapper.userEntityToUser(userEntityOptional.get()));
     }
 
     @Override
@@ -42,5 +46,17 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public Optional<User> findUserByEmail(String email) {
         return Optional.empty();
+    }
+
+    @Override
+    public User updateUser(User user) {
+        UserEntity userEntity = userEntityDataMapper.userToUserEntity(user);
+        return userEntityDataMapper.userEntityToUser(userJpaRepository.save(userEntity));
+    }
+
+    @Override
+    public User updatePassword(User user) {
+        UserEntity userEntity = userEntityDataMapper.userToUserEntity(user);
+        return userEntityDataMapper.userEntityToUser(userJpaRepository.save(userEntity));
     }
 }

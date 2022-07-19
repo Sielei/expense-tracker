@@ -1,5 +1,6 @@
 package com.et.expense.application.service.ports.input.service;
 
+import com.et.expense.application.service.dto.ExpenseCategoryDto;
 import com.et.expense.application.service.dto.ExpenseDto;
 import com.et.expense.application.service.ports.input.handler.CreateExpenseHandler;
 import com.et.expense.application.service.ports.input.handler.FetchExpenseHandler;
@@ -29,5 +30,20 @@ public class ExpenseApplicationServiceImpl implements ExpenseApplicationService{
     @Override
     public List<ExpenseDto> findExpenseByUserId(UUID userId) {
         return fetchExpenseHandler.findByUserId(userId);
+    }
+
+    @Override
+    public ExpenseCategoryDto createExpenseCategory(ExpenseCategoryDto expenseCategoryDto) {
+        return createExpenseHandler.createExpenseCategory(expenseCategoryDto);
+    }
+
+    @Override
+    public ExpenseCategoryDto findExpenseCategoryById(UUID categoryId) {
+        return fetchExpenseHandler.findExpenseCategoryById(categoryId);
+    }
+
+    @Override
+    public List<ExpenseCategoryDto> findAllUserExpenseCategories(UUID userId) {
+        return fetchExpenseHandler.findAllUserExpenseCategories(userId);
     }
 }
