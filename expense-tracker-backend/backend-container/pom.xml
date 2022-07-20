@@ -22,11 +22,27 @@
         </dependency>
         <dependency>
             <groupId>com.et</groupId>
+            <artifactId>account-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
+            <artifactId>budget-domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
             <artifactId>expense-application-service</artifactId>
         </dependency>
         <dependency>
             <groupId>com.et</groupId>
             <artifactId>user-application-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
+            <artifactId>account-application-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
+            <artifactId>budget-application-service</artifactId>
         </dependency>
         <dependency>
             <groupId>com.et</groupId>

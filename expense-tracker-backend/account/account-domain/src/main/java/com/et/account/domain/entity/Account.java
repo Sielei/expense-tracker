@@ -7,7 +7,6 @@ import com.et.common.domain.valueobject.Currency;
 import com.et.common.domain.valueobject.Money;
 import com.et.common.domain.valueobject.UserId;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 public class Account extends AggregateRoot<AccountId> {
@@ -30,10 +29,12 @@ public class Account extends AggregateRoot<AccountId> {
     }
 
     public Money creditAccount(Money amount){
-        return new Money(BigDecimal.ZERO);
+        this.accountBalance = this.accountBalance.add(amount);
+        return this.accountBalance;
     }
     public Money debitAccount(Money amount){
-        return new Money(BigDecimal.ZERO);
+        this.accountBalance = this.accountBalance.subtract(amount);
+        return this.accountBalance;
     }
 
     private Account(Builder builder) {

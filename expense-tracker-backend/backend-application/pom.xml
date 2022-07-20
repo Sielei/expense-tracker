@@ -22,6 +22,14 @@
         </dependency>
         <dependency>
             <groupId>com.et</groupId>
+            <artifactId>account-application-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
+            <artifactId>budget-application-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.et</groupId>
             <artifactId>common-application</artifactId>
         </dependency>
         <dependency>

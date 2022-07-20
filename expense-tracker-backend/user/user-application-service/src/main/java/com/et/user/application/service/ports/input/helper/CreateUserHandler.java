@@ -27,12 +27,14 @@ public class CreateUserHandler {
         return userDataMapper.userToUserDto(newUser);
     }
 
+    @Transactional
     public UserDto updateUserDetails(UUID userId, UserDto userDto) {
         User userToUpdate = userRepository.findUserById(new UserId(userId)).get();
         userDomainService.updateUser(userToUpdate, userDto.getEmail(), userDto.getUsername());
         return userDataMapper.userToUserDto(userRepository.updateUser(userToUpdate));
     }
 
+    @Transactional
     public UserDto updateUserPassword(UUID userId, String newPassword) {
         User userToUpdate = userRepository.findUserById(new UserId(userId)).get();
         userDomainService.updateUserPassword(userToUpdate, newPassword);

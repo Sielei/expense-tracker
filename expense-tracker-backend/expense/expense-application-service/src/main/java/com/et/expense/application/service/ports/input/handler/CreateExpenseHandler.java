@@ -28,6 +28,7 @@ public class CreateExpenseHandler {
         return expenseDataMapper.expenseToExpenseDto(newExpense);
     }
 
+    @Transactional
     public ExpenseCategoryDto createExpenseCategory(ExpenseCategoryDto expenseCategoryDto) {
         Category expenseCategoryDtoToCategory = expenseDataMapper.expenseCategoryDtoToCategory(expenseCategoryDto);
         expenseDomainService.initAndCreateCategory(expenseCategoryDtoToCategory);
