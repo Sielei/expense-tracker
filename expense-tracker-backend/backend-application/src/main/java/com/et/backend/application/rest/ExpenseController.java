@@ -19,7 +19,8 @@ public class ExpenseController {
     private final ExpenseApplicationService expenseApplicationService;
 
     @PostMapping
-    public ResponseEntity<ExpenseDto> createExpense(@RequestBody ExpenseDto expenseDto){
+    public ResponseEntity<ExpenseDto> createExpense(@RequestAttribute("userId") UUID userId, @RequestBody ExpenseDto expenseDto){
+        expenseDto.setUserId(userId.toString());
         ExpenseDto newExpenseDto = expenseApplicationService.createExpense(expenseDto);
         return new ResponseEntity<>(newExpenseDto, HttpStatus.CREATED);
     }
