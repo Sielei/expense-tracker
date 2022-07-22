@@ -1,8 +1,8 @@
 package com.et.backend.application.rest;
 
-import com.et.backend.application.dto.CreateUserDto;
-import com.et.backend.application.dto.LoginDto;
-import com.et.backend.application.util.JwtUtil;
+import com.et.backend.application.auth.dto.CreateUserDto;
+import com.et.backend.application.auth.dto.LoginDto;
+import com.et.backend.application.auth.util.JwtUtil;
 import com.et.user.application.service.dto.UserDto;
 import com.et.user.application.service.ports.input.service.UserApplicationService;
 import lombok.RequiredArgsConstructor;

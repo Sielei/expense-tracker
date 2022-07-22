@@ -1,7 +1,7 @@
 package com.et.backend.application.rest;
 
-import com.et.backend.application.dto.PasswordDto;
-import com.et.backend.application.util.JwtUtil;
+import com.et.backend.application.auth.dto.PasswordDto;
+import com.et.backend.application.auth.util.JwtUtil;
 import com.et.user.application.service.dto.UserDto;
 import com.et.user.application.service.ports.input.service.UserApplicationService;
 import com.et.user.domain.exception.UserDomainException;
