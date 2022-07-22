@@ -1,6 +1,6 @@
-package com.et.backend.application.filter;
+package com.et.backend.application.auth.filter;
 
-import com.et.backend.application.util.JwtUtil;
+import com.et.backend.application.auth.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

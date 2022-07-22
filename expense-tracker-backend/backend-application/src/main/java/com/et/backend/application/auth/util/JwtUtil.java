@@ -1,4 +1,4 @@
-package com.et.backend.application.util;
+package com.et.backend.application.auth.util;
 
 import com.et.user.application.service.dto.UserDto;
 import io.jsonwebtoken.Claims;

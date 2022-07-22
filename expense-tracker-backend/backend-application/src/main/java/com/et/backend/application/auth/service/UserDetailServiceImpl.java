@@ -1,4 +1,4 @@
-package com.et.backend.application.service;
+package com.et.backend.application.auth.service;
 
 import com.et.user.application.service.dto.UserDto;
 import com.et.user.application.service.ports.input.service.UserApplicationService;
