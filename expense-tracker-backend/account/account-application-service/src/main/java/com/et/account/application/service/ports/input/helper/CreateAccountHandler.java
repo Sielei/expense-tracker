@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Component
@@ -39,5 +40,17 @@ public class CreateAccountHandler {
         accountRepository.updateAccount(accountToUpdate);
         return accountDataMapper.accountToAccountDto(accountToUpdate);
 
+    }
+
+    public void creditAccount(UUID accountId, BigDecimal amount) {
+        Account accountToCredit = accountRepository.findAccountById(new AccountId(accountId)).get();
+        accountDomainService.creditAccount(accountToCredit, new Money(amount));
+        accountRepository.updateAccount(accountToCredit);
+    }
+
+    public void debitAccount(UUID accountId, BigDecimal amount) {
+        Account accountToDebit = accountRepository.findAccountById(new AccountId(accountId)).get();
+        accountDomainService.debitAccount(accountToDebit, new Money(amount));
+        accountRepository.updateAccount(accountToDebit);
     }
 }

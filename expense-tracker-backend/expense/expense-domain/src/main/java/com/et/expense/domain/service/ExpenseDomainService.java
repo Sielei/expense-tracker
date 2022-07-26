@@ -7,7 +7,7 @@ import com.et.expense.domain.entity.Category;
 import com.et.expense.domain.entity.Expense;
 
 public interface ExpenseDomainService {
-    void initializeAndInitializeExpense(Expense expense);
+    void initializeAndValidateExpense(Expense expense);
 
     void updateExpense(Expense expense, String expenseName, String expenseDescription, Category category,
                        AccountId accountId, Currency currency, Money expenseCost);

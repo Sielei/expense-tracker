@@ -6,6 +6,7 @@ import com.et.account.application.service.ports.input.helper.FetchAccountHandler
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -35,5 +36,15 @@ public class AccountApplicationServiceImpl implements AccountApplicationService{
     @Override
     public AccountDto updateAccount(UUID accountId, AccountDto accountDto) {
         return createAccountHandler.updateAccount(accountId, accountDto);
+    }
+
+    @Override
+    public void creditAccount(UUID accountId, BigDecimal amount) {
+        createAccountHandler.creditAccount(accountId, amount);
+    }
+
+    @Override
+    public void debitAccount(UUID accountId, BigDecimal amount) {
+        createAccountHandler.debitAccount(accountId, amount);
     }
 }

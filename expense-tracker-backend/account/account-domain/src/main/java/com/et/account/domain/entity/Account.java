@@ -1,5 +1,6 @@
 package com.et.account.domain.entity;
 
+import com.et.account.domain.exception.AccountDomainException;
 import com.et.account.domain.valueObject.AccountType;
 import com.et.common.domain.entity.AggregateRoot;
 import com.et.common.domain.valueobject.AccountId;
@@ -33,6 +34,10 @@ public class Account extends AggregateRoot<AccountId> {
         return this.accountBalance;
     }
     public Money debitAccount(Money amount){
+        if (this.accountBalance.getAmount().compareTo(amount.getAmount()) < 0){
+            throw new AccountDomainException("Insufficient funds in account. Account balance is "
+                    + this.accountCurrency + " " + accountBalance.getAmount());
+        }
         this.accountBalance = this.accountBalance.subtract(amount);
         return this.accountBalance;
     }
